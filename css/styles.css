@@ -1,0 +1,126 @@
+/* ─────────────────────────────────────────────────────────────────────────── */
+/* styles.css — Thème "tente militaire / tableau de briefing"                    */
+/* ─────────────────────────────────────────────────────────────────────────── */
+
+/* ── Reset & base ────────────────────────────────────────────────────────── */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+  background: #2c2416;
+}
+
+/* ── Splash screen (écran de chargement) ─────────────────────────────────── */
+#splash {
+  position: fixed;
+  inset: 0;
+  background: #2c2416;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  z-index: 9999;
+  transition: opacity 0.5s ease;
+}
+
+#splash img {
+  width: 130px;
+  animation: bounce 0.9s ease-in-out infinite alternate;
+}
+
+#splash p {
+  color: #c8a84b;
+  font-family: "Courier New", monospace;
+  font-size: 12px;
+  letter-spacing: 4px;
+}
+
+/* ── Animations ──────────────────────────────────────────────────────────── */
+@keyframes bounce {
+  from { transform: translateY(-10px); }
+  to   { transform: translateY(10px); }
+}
+
+@keyframes blink {
+  50% { opacity: 0; }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Éléments natifs ─────────────────────────────────────────────────────── */
+select option {
+  background: #1a2b1a;
+  color: #e8dfc0;
+}
+
+/* ── Scrollbars ──────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e1a0f;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #4a3f2a;
+  border-radius: 2px;
+}
+
+/* ── Responsive : desktop (≥ 700px) ──────────────────────────────────────── */
+@media (min-width: 700px) {
+  .mobile-tabs {
+    display: none !important;
+  }
+  .panel-left,
+  .panel-center,
+  .panel-right {
+    display: flex !important;
+  }
+  .hidden-mobile {
+    display: flex !important;
+  }
+  .main-layout {
+    flex-direction: row !important;
+  }
+}
+
+/* ── Responsive : mobile (< 700px) ───────────────────────────────────────── */
+@media (max-width: 699px) {
+  .mobile-tabs {
+    display: flex !important;
+  }
+  .panel-left {
+    flex: 1 !important;
+    border-right: none !important;
+    min-height: calc(100vh - 108px);
+  }
+  .panel-center {
+    flex: 1 !important;
+    min-height: calc(100vh - 108px);
+  }
+  .panel-right {
+    flex: 1 !important;
+    border-left: none !important;
+    min-height: calc(100vh - 108px);
+  }
+  .hidden-mobile {
+    display: none !important;
+  }
+  .main-layout {
+    flex-direction: column !important;
+  }
+  .desktop-save {
+    display: none !important;
+  }
+}
